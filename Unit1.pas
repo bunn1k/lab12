@@ -68,7 +68,8 @@ procedure TForm1.Button1Click(Sender: TObject);
 begin
   x:=x+1; y:=y+1; z:=z+1;
   Par1:=TParallel.Create;
-  Par1.Init(1,2,3);
+  Par[x]:=Par1;
+  Par1.Init(x,y,z);
   Par1.Show;
 end;
 
@@ -86,7 +87,9 @@ var
    i:integer;
 begin
   for i := 1 to 5 do
-    Memo1.Lines.Add('Адрес объекта с номером' + IntToStr(i) + 'равен ' + IntToStr(integer(Par[i])) + 'Поле Fa = ' + IntToStr(Par[i].Fa) );
+    Memo1.Lines.Add('Адрес объекта с номером ' + IntToStr(i)
+    + ' равен ' + IntToStr(integer(Par[i])) + ' Поле Fa = ' +
+    IntToStr(Par[i].Fa) );
 end;
 
 end.

@@ -90,6 +90,7 @@ begin
     Memo1.Lines.Add('Адрес объекта с номером ' + IntToStr(i)
     + ' равен ' + IntToStr(integer(Par[i])) + ' Поле Fa = ' +
     IntToStr(Par[i].Fa) );
+    Par[i].Show;
 end;
 
 end.

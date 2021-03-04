@@ -26,7 +26,8 @@ TParallel = class
   Fa:word;
   Fb:word;
   Fc:word;
-  procedure Init(a,b,c:word);
+ {procedure Init(a,b,c:word);}
+  constructor Create (a,b,c:word);
   function Volume:word;
 
   procedure Show;
@@ -44,12 +45,21 @@ implementation
 
 { TParallel }
 
-procedure TParallel.Init(a, b, c: word);
+constructor TParallel.Create(a: Word; b: Word; c: Word);
 begin
  Fa:=a;
  Fb:=b;
  Fc:=c;
 end;
+
+{procedure TParallel.Init(a, b, c: word);
+begin
+ Fa:=a;
+ Fb:=b;
+ Fc:=c;
+end;
+}
+
 
 procedure TParallel.Show;
 begin
@@ -67,9 +77,9 @@ end;
 procedure TForm1.Button1Click(Sender: TObject);
 begin
   x:=x+1; y:=y+1; z:=z+1;
-  Par1:=TParallel.Create;
+  Par1:=TParallel.Create(x,y,z);
   Par[x]:=Par1;
-  Par1.Init(x,y,z);
+  //Par1.Init(x,y,z);
   Par1.Show;
   Memo1.Lines.Add('Адрес в памяти объекта, содержащийся в Par1, равен ' + IntToStr(integer(Par1)));
 end;

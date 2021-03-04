@@ -42,6 +42,14 @@ TBar = class(TParallel)
   procedure Show;
 end;
 
+TTransport = class
+end;
+
+TAutomobile = class(TTransport)
+end;
+
+TToyota = class(TAutomobile)
+end;
 
 var
   Form1: TForm1; Par1:TParallel; Par:array[1..5] of TParallel;
@@ -49,6 +57,9 @@ var
   y:word=0;
   z:word=0;
   Bar1:TBar;
+  Transport:TTransport;
+  Automobile:TAutomobile;
+  Toyota:TToyota;
 
 implementation
 
@@ -57,32 +68,34 @@ implementation
 { TParallel }
 
 constructor TParallel.Create(a: Word; b: Word; c: Word);
-begin
- Fa:=a;
- Fb:=b;
- Fc:=c;
-end;
+ begin
+  Fa:=a;
+  Fb:=b;
+  Fc:=c;
+ end;
 
 constructor TBar.Create(a: Word; b: Word; c: Word; Ro: Real);
-begin
+ begin
    inherited Create(a,b,c);
    FRo:=Ro;
-end;
+ end;
 
 function TBar.massa:real;
-begin
+ begin
   result:=FRo*Volume;
-end;
+ end;
 
 procedure TBar.Show;
-begin
+ begin
   ShowMessage('Объем параллелепипеда равен ' + IntToStr(Volume) + #10#13 +
   'Ширина - Поле Fa = ' + IntToStr(Fa) + #10#13 +
   'Длина - Поле Fb = ' + IntToStr(Fb) + #10#13 +
   'Высота - Поле Fc = ' + IntToStr(Fc) + #10#13 +
   'Плотность - Поле FRo = ' + FloatToStr(FRo) + #10#13 +
   'Масса = ' + FloatToStr(massa));
-end;
+ end;
+
+
 
 {procedure TParallel.Init(a, b, c: word);
 begin
@@ -94,41 +107,41 @@ end;
 
 
 procedure TParallel.Show;
-begin
- ShowMessage('Объем параллелепипеда равен '
+ begin
+  ShowMessage('Объем параллелепипеда равен '
      + IntToStr(Volume)+#10#13 + 'Ширина - Поле Fa ='
      + IntToStr(Fa)+#10#13+ 'Длина - Поле Fb ='
      + IntToStr(Fb) + #10#13+ 'Высота - Поле Fc =' + IntToStr(Fc));
-end;
+ end;
 
 function TParallel.Volume: word;
-begin
- result:=Fa*Fb*Fc;
-end;
+ begin
+  result:=Fa*Fb*Fc;
+ end;
 
 procedure TForm1.Button1Click(Sender: TObject);
-begin
+ begin
   x:=x+1; y:=y+1; z:=z+1;
   Par1:=TParallel.Create(x,y,z);
   Par[x]:=Par1;
   //Par1.Init(x,y,z);
   Par1.Show;
   Memo1.Lines.Add('Адрес в памяти объекта, содержащийся в Par1, равен ' + IntToStr(integer(Par1)));
-end;
+ end;
 
 procedure TForm1.Button2Click(Sender: TObject);
-begin
+ begin
   if Par1 = nil then
      Form1.Caption:='Объекта в памяти нет'
       else
      Form1.Caption:='Объект существует в памяти';
 
-end;
+ end;
 
 procedure TForm1.Button3Click(Sender: TObject);
 var
    i:integer;
-begin
+ begin
   for i := 1 to Memo1.Lines.Count do
   begin
     Memo1.Lines.Add('Адрес объекта с номером ' + IntToStr(i)
@@ -136,13 +149,23 @@ begin
     IntToStr(Par[i].Fa) );
     Par[i].Show;
   end;
-end;
+ end;
 
 procedure TForm1.Button4Click(Sender: TObject);
-begin
+ begin
   Bar1:=TBar.Create(1,2,3,10.5);
   Bar1.Show;
-end;
+  TParallel(Bar1).Show;
+ end;
+
+ begin
+  Transport:= TTransport.Create;
+  Automobile:= TAutomobile.Create;
+  Toyota:= TToyota.Create;
+
+  Transport:= Automobile;
+  Transport:= Toyota;
+  Automobile:= Toyota;
 
 end.
 

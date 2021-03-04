@@ -2,7 +2,7 @@ object Form1: TForm1
   Left = 0
   Top = 0
   Caption = #1050#1083#1072#1089#1089' TParallel'
-  ClientHeight = 413
+  ClientHeight = 475
   ClientWidth = 364
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -65,5 +65,20 @@ object Form1: TForm1
     ParentFont = False
     TabOrder = 3
     OnClick = Button3Click
+  end
+  object Button4: TButton
+    Left = 8
+    Top = 416
+    Width = 348
+    Height = 41
+    Caption = #1057#1086#1079#1076#1072#1090#1100' '#1086#1073#1098#1077#1082#1090' '#1082#1083#1072#1089#1089#1072' TBar = class(TParallel)'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 4
+    OnClick = Button4Click
   end
 end

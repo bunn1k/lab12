@@ -164,12 +164,11 @@ var
 
 procedure TForm1.Button4Click(Sender: TObject);
  begin
-  Par1:=TParallel.Create(1,2,3);
-  Bar1:=TBar.Create(1,2,3,10.5);
-  BarSon1:=TBarSon.Create(1,2,3,10.5);
-  Par1:=Bar1;
+  Par1:=TBar.Create(1,2,3,10.5);
   ShowMessage('Плотность - поле FRo=' + FloatToStr((Par1 As TBar).FRo)
   +#10#13 + 'Масса = ' + FloatToStr((Par1 As TBar).massa));
+  Par1.Show;
+  Par1:=TBarSon.Create(1,2,3,10.5);
   Par1.Show;
  end;
 
@@ -188,7 +187,6 @@ begin
   Transport:= Automobile;
   Transport:= Toyota;
   Automobile:= Toyota;
-
 end.
 
 

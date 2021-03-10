@@ -30,7 +30,7 @@ TParallel = class
   Fc:word;
  {procedure Init(a,b,c:word);}
   constructor Create (a,b,c:word);
-  function Volume:word;
+  function Volume:word; virtual;
   procedure Show;
 end;
 
@@ -40,6 +40,7 @@ TBar = class(TParallel)
   constructor Create(a,b,c:word; Ro:real);
   function massa:real;
   procedure Show;
+  function Volume:word; override;
 end;
 
 TTransport = class
@@ -97,6 +98,11 @@ procedure TBar.Show;
 
 
 
+function TBar.Volume: word;
+begin
+  result:=Fa*Fb*Fc*100;
+end;
+
 {procedure TParallel.Init(a, b, c: word);
 begin
  Fa:=a;
@@ -153,9 +159,10 @@ var
 
 procedure TForm1.Button4Click(Sender: TObject);
  begin
+  Par1:=TParallel.Create(1,2,3);
+  Par1.Show;
   Bar1:=TBar.Create(1,2,3,10.5);
   Bar1.Show;
-  TParallel(Bar1).Show;
  end;
 
  begin

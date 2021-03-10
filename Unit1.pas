@@ -43,6 +43,10 @@ TBar = class(TParallel)
   function Volume:word; override;
 end;
 
+TBarSon = class(TBar)
+  function Volume:word; override;
+end;
+
 TTransport = class
 end;
 
@@ -61,6 +65,7 @@ var
   Transport:TTransport;
   Automobile:TAutomobile;
   Toyota:TToyota;
+  BarSon1:TBarSon;
 
 implementation
 
@@ -163,9 +168,18 @@ procedure TForm1.Button4Click(Sender: TObject);
   Par1.Show;
   Bar1:=TBar.Create(1,2,3,10.5);
   Bar1.Show;
+  BarSon1:=TBarSon.Create(1,2,3,10.5);
+  BarSon1.Show;
  end;
 
- begin
+ { TBarSon }
+
+function TBarSon.Volume: word;
+begin
+  result:=Fa*Fb*Fc*1000;
+end;
+
+begin
   Transport:= TTransport.Create;
   Automobile:= TAutomobile.Create;
   Toyota:= TToyota.Create;

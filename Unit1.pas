@@ -33,7 +33,8 @@ TParallel = class
  {procedure Init(a,b,c:word);}
   constructor Create (a,b,c:word);
   function Volume:word; virtual;
-  procedure Show; virtual;
+  procedure Show_Virtual; virtual;
+  procedure Show_Static;
 end;
 
 TBar = class(TParallel)
@@ -42,7 +43,13 @@ TBar = class(TParallel)
   constructor Create(a,b,c:word; Ro:real);
   function massa:real;
   function Volume:word; override;
-  procedure Show; override;
+  procedure Show_Virtual; override;
+  procedure Show_Static;
+end;
+
+TParallelSon = class(TParallel)
+  public
+  procedure Show_Virtual; override;
 end;
 
 TBarSon = class(TBar)

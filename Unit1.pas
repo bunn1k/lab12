@@ -47,6 +47,7 @@ end;
 
 TBarSon = class(TBar)
   function Volume:word; override;
+  procedure Show; override;
 end;
 
 TTransport = class
@@ -183,9 +184,24 @@ procedure TForm1.Button5Click(Sender: TObject);
   Par1:=TBar.Create(1,2,3,100);
   Par1.Show;
   Par1.Free;
+
+  Par1:=TBarSon.Create(1,2,3,10);
+  Par1.Show;
+  Par1.Free;
  end;
 
  { TBarSon }
+
+procedure TBarSon.Show;
+begin
+  ShowMessage('Show - override. TBarSon' +#10#13 +
+  'Объем параллелепипеда равен ' + IntToStr(Volume) + #10#13 +
+  'Ширина - Поле Fa = ' + IntToStr(Fa) + #10#13 +
+  'Длина - Поле Fb = ' + IntToStr(Fb) + #10#13 +
+  'Высота - Поле Fc = ' + IntToStr(Fc) + #10#13 +
+  'Плотность - Поле FRo = ' + FloatToStr(FRo) + #10#13 +
+  'Масса = ' + FloatToStr(massa));
+end;
 
 function TBarSon.Volume: word;
 begin

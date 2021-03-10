@@ -165,11 +165,12 @@ var
 procedure TForm1.Button4Click(Sender: TObject);
  begin
   Par1:=TParallel.Create(1,2,3);
-  Par1.Show;
   Bar1:=TBar.Create(1,2,3,10.5);
-  Bar1.Show;
   BarSon1:=TBarSon.Create(1,2,3,10.5);
-  BarSon1.Show;
+  Par1:=Bar1;
+  ShowMessage('Плотность - поле FRo=' + FloatToStr((Par1 As TBar).FRo)
+  +#10#13 + 'Масса = ' + FloatToStr((Par1 As TBar).massa));
+  Par1.Show;
  end;
 
  { TBarSon }

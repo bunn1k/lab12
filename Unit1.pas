@@ -13,10 +13,12 @@ type
     Memo1: TMemo;
     Button3: TButton;
     Button4: TButton;
+    Button5: TButton;
     procedure Button2Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
     procedure Button4Click(Sender: TObject);
+    procedure Button5Click(Sender: TObject);
   private
 
   public
@@ -31,7 +33,7 @@ TParallel = class
  {procedure Init(a,b,c:word);}
   constructor Create (a,b,c:word);
   function Volume:word; virtual;
-  procedure Show;
+  procedure Show; virtual;
 end;
 
 TBar = class(TParallel)
@@ -39,8 +41,8 @@ TBar = class(TParallel)
   FRo:real;
   constructor Create(a,b,c:word; Ro:real);
   function massa:real;
-  procedure Show;
   function Volume:word; override;
+  procedure Show; override;
 end;
 
 TBarSon = class(TBar)
@@ -165,11 +167,22 @@ var
 procedure TForm1.Button4Click(Sender: TObject);
  begin
   Par1:=TBar.Create(1,2,3,10.5);
-  ShowMessage('Плотность - поле FRo=' + FloatToStr((Par1 As TBar).FRo)
+  ShowMessage('Плотность - поле FRo = ' + FloatToStr((Par1 As TBar).FRo)
   +#10#13 + 'Масса = ' + FloatToStr((Par1 As TBar).massa));
   Par1.Show;
   Par1:=TBarSon.Create(1,2,3,10.5);
   Par1.Show;
+ end;
+
+procedure TForm1.Button5Click(Sender: TObject);
+ begin
+  Par1:=TParallel.Create(1,2,3);
+  Par1.Show;
+  Par1.Free;
+
+  Par1:=TBar.Create(1,2,3,100);
+  Par1.Show;
+  Par1.Free;
  end;
 
  { TBarSon }
